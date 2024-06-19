@@ -1,0 +1,155 @@
+<form enctype="multipart/form-data" method="POST" action="/session/index.php" name="up">
+  <table class="uldetails">
+    <tr>
+      <td class="tdleft"><label for="torrent">Torrent</label></td>
+      <td><input type="file" id="torrent" name="torrent" size="30" /></td>
+    </tr>
+    <tr>
+      <td class="tdleft">
+        <label for="tname"
+          >Torrent name"):<br />
+          (if other than file name)</label
+        >
+      </td>
+      <td><input type="text" id="tname" name="tname" size="30" maxlength="80" value="" /></td>
+    </tr>
+    <tr>
+      <td class="tdleft"><label for="cate">Category:</label></td>
+      <td>
+        <select id="cate" name="cate" onchange="showLayer(this);">
+          <option>..</option>
+          <optgroup label="Audio">
+            <option value="101">Music</option>
+            <option value="102">Audio books</option>
+            <option value="103">Sound clips</option>
+            <option value="104">FLAC</option>
+            <option value="199">Other</option>
+          </optgroup>
+          <optgroup label="Video">
+            <option value="201">Movies</option>
+            <option value="202">Movies DVDR</option>
+            <option value="203">Music videos</option>
+            <option value="204">Movie clips</option>
+            <option value="205">TV shows</option>
+            <option value="206">Handheld</option>
+            <option value="207">HD - Movies</option>
+            <option value="208">HD - TV shows</option>
+            <option value="209">3D</option>
+            <option value="210">CAM/TS</option>
+            <option value="211">UHD/4k - Movies</option>
+            <option value="212">UHD/4k - TV shows</option>
+            <option value="299">Other</option>
+          </optgroup>
+          <optgroup label="Applications">
+            <option value="301">Windows</option>
+            <option value="302">Mac</option>
+            <option value="303">UNIX</option>
+            <option value="304">Handheld</option>
+            <option value="305">IOS (iPad/iPhone)</option>
+            <option value="306">Android</option>
+            <option value="399">Other OS</option>
+          </optgroup>
+          <optgroup label="Games">
+            <option value="401">PC</option>
+            <option value="402">Mac</option>
+            <option value="403">PSx</option>
+            <option value="404">XBOX360</option>
+            <option value="405">Wii</option>
+            <option value="406">Handheld</option>
+            <option value="407">IOS (iPad/iPhone)</option>
+            <option value="408">Android</option>
+            <option value="499">Other</option>
+          </optgroup>
+          <optgroup label="Porn">
+            <option value="501">Movies</option>
+            <option value="502">Movies DVDR</option>
+            <option value="503">Pictures</option>
+            <option value="504">Games</option>
+            <option value="505">HD - Movies</option>
+            <option value="506">Movie clips</option>
+            <option value="507">UHD/4k - Movies</option>
+            <option value="599">Other</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option value="601">E-books</option>
+            <option value="602">Comics</option>
+            <option value="603">Pictures</option>
+            <option value="604">Covers</option>
+            <option value="605">Physibles</option>
+            <option value="699">Other</option>
+          </optgroup>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Anonymous</td>
+      <td><input name="anon" type="checkbox" value="anon" /></td>
+    </tr>
+    <tr>
+      <td class="tdleft">
+        <div id="imdb1" style="display: none"><label for="imdb">IMDB ID</label></div>
+      </td>
+      <td>
+        <div id="imdb2" style="display: none"><input type="text" id="imdb" name="imdb" size="30" value="" /></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="tdleft">
+        <div id="SpokenLangDiv" style="display: none">
+          Spoken language(s):<br />
+          <select name="lang_spk[]" size="6" multiple="multiple">
+            <option value="1">English</option>
+            <option value="2">Swedish</option>
+            <option value="4">Norwegian</option>
+            <option value="8">Danish</option>
+            <option value="16">Finnish</option>
+            <option value="32">German</option>
+            <option value="64">French</option>
+            <option value="128">Spanish</option>
+            <option value="256">Italian</option>
+            <option value="512">Dutch</option>
+            <option value="1024">Polish</option>
+            <option value="2048">Chinese</option>
+            <option value="4096">Japanese</option>
+            <option value="8192">Korean</option>
+            <option value="16384">Portugese</option>
+            <option value="32768">Russian</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div id="TextedLangDiv" style="display: none">
+          <p style="margin: 0">Texted language(s):</p>
+          <select name="lang_text[]" size="6" multiple="multiple">
+            <option value="1">English</option>
+            <option value="2">Swedish</option>
+            <option value="4">Norwegian</option>
+            <option value="8">Danish</option>
+            <option value="16">Finnish</option>
+            <option value="32">German</option>
+            <option value="64">French</option>
+            <option value="128">Spanish</option>
+            <option value="256">Italian</option>
+            <option value="512">Dutch</option>
+            <option value="1024">Polish</option>
+            <option value="2048">Chinese</option>
+            <option value="4096">Japanese</option>
+            <option value="8192">Korean</option>
+            <option value="16384">Portugese</option>
+            <option value="32768">Russian</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <div id="descpart">
+          <label for="desc">Description:</label><br />
+          <textarea id="desc" class="nfo" name="desc" rows="20" cols="80"></textarea><br />
+          <input type="submit" value="Add to index" /><br />
+          <input type="hidden" name="act" value="upload" />
+        </div>
+      </td>
+    </tr>
+  </table>
+</form>

@@ -1,0 +1,62 @@
+{
+    "Audio": {
+        "Music": 101,
+        "Audio books": 102,
+        "Sound clips": 103,
+        "FLAC": 104,
+        "Other": 199
+    },
+    "Video": {
+        "Movies": 201,
+        "Movies DVDR": 202,
+        "Music videos": 203,
+        "Movie clips": 204,
+        "TV shows": 205,
+        "Handheld": 206,
+        "HD - Movies": 207,
+        "HD - TV shows": 208,
+        "3D": 209,
+        "CAM/TS": 210,
+        "UHD/4k - Movies": 211,
+        "UHD/4k - TV shows": 212,
+        "Other": 299
+    },
+    "Applications": {
+        "Windows": 301,
+        "Mac": 302,
+        "UNIX": 303,
+        "Handheld": 304,
+        "IOS (iPad/iPhone)": 305,
+        "Android": 306,
+        "Other OS": 399
+    },
+    "Games": {
+        "PC": 401,
+        "Mac": 402,
+        "PSx": 403,
+        "XBOX360": 404,
+        "Wii": 405,
+        "Handheld": 406,
+        "IOS (iPad/iPhone)": 407,
+        "Android": 408,
+        "Other": 499
+    },
+    "Porn": {
+        "Movies": 501,
+        "Movies DVDR": 502,
+        "Pictures": 503,
+        "Games": 504,
+        "HD - Movies": 505,
+        "Movie clips": 506,
+        "UHD/4k - Movies": 507,
+        "Other": 599
+    },
+    "Other": {
+        "E-books": 601,
+        "Comics": 602,
+        "Pictures": 603,
+        "Covers": 604,
+        "Physibles": 605,
+        "Other": 699
+    }
+}
