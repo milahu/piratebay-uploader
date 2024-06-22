@@ -11,6 +11,7 @@
 import os
 import re
 import sys
+import json
 import uuid
 import asyncio
 
@@ -313,9 +314,24 @@ async def main():
         parser.print_help()
         sys.exit(1)
 
+    # read config from ~/.config/piratebay_uploader/config.json
+    config = dict()
+    config_path = os.environ["HOME"] + "/.config/piratebay_uploader/config.json"
+    if os.path.isfile(config_path):
+        print(f"reading config from {config_path!r}")
+        with open(config_path, "r") as f:
+            config = json.load(f)
+
+    username = args.username
+    password = args.password
+
+    if not (username and password):
+        username = config["username"]
+        password = config["password"]
+
     kwargs = dict(
-        username = args.username,
-        password = args.password,
+        username = username,
+        password = password,
     )
 
     description = args.description
