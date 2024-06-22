@@ -7,6 +7,7 @@ pkgs.mkShell {
     (python3.withPackages (pp: with pp; [
       aiohttp
       aiohttp-socks
+      aiohttp-retry
     ]))
   ];
 }

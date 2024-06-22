@@ -16,6 +16,7 @@ import asyncio
 
 import aiohttp
 import aiohttp_socks
+import aiohttp_retry
 
 
 
@@ -153,6 +154,8 @@ class PiratebayUploader:
             cookie_jar=self.cookie_jar,
         )
 
+        self.client = aiohttp_retry.RetryClient(self.session, retry_attempts=10)
+
         return self
 
     async def __aexit__(self, *args, **kwargs):
@@ -185,7 +188,7 @@ class PiratebayUploader:
             act="login",
         )
 
-        async with self.session.post(url, data=data) as response:
+        async with self.client.post(url, data=data) as response:
 
             html = await response.text()
 
@@ -242,7 +245,7 @@ class PiratebayUploader:
 
         url = self.base_url + "/session/"
 
-        async with self.session.post(url, data=data) as response:
+        async with self.client.post(url, data=data) as response:
 
             # TODO check for positive result
             # redirect to description page
