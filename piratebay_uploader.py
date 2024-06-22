@@ -315,11 +315,17 @@ async def main():
         password = args.password,
     )
 
+    description = args.description
+    if os.path.isfile(description):
+        print(f"reading description from {description!r}")
+        with open(description, "r") as f:
+            description = f.read()
+
     async with PiratebayUploader(**kwargs) as uploader:
 
         await uploader.upload_torrent(
             args.torrent_file,
-            args.description,
+            description,
             args.category,
             args.anonymous,
         )
