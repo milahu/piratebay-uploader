@@ -300,10 +300,14 @@ async def main():
 
     if not args.torrent_file:
         print("error: torrent file is required")
+        print()
+        parser.print_help()
         sys.exit(1)
 
     if not args.description:
         print("error: description is required")
+        print()
+        parser.print_help()
         sys.exit(1)
 
     kwargs = dict(
