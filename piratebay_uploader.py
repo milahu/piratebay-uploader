@@ -113,6 +113,13 @@ def print_categories():
 
 
 
+import datetime
+def get_datetime_str():
+    # https://stackoverflow.com/questions/2150739/iso-time-iso-8601-in-python#28147286
+    return datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%S.%fZ")
+
+
+
 class LoginError(Exception):
     pass
 
@@ -142,6 +149,7 @@ class PiratebayUploader:
             tor_user = str(uuid.uuid4())
         self.proxy_url = f"socks5://{tor_user}@{tor_host}:{tor_port}"
         self.base_url = "http://piratebayo3klnzokct3wt5yyxb2vpebbuyjl7m623iaxmqhsd52coid.onion"
+        self.clearnet_base_url = "https://thepiratebay.org"
 
     async def __aenter__(self):
 
@@ -230,6 +238,14 @@ class PiratebayUploader:
         # for example, the title must not be longer than 80 chars (or 80 bytes)
         # https://forum.suprbay.org/Thread-ThePirateBay-Error-Upload-error4?pid=401482#pid401482
 
+        if isinstance(description, str):
+            description = description.strip()
+
+        if not description:
+            raise ValueError("empty description")
+
+        # TODO check maximum size of description
+
         await self.login()
 
         # docs/forms/upload.html
@@ -245,6 +261,8 @@ class PiratebayUploader:
             data["anon"] = "anon"
 
         url = self.base_url + "/session/"
+
+        result_url = None
 
         async with self.client.post(url, data=data) as response:
 
@@ -267,7 +285,24 @@ class PiratebayUploader:
 
                 raise UploadError(" ".join(errors))
 
-        print("upload ok")
+            # debug: manually check upload errors
+            html_path = f"piratebay_uploader.py.upload.{get_datetime_str()}.html"
+            print("writing", html_path)
+            with open(html_path, "w") as f:
+                f.write(html)
+
+            result_url = str(response.url)
+            result_path = result_url[len(self.base_url):]
+
+            # check result_url
+            # expected path: /description.php?id=12345
+            if not result_path.startswith("/description.php?"):
+                raise UploadError(f"unexpected result_url {result_url!r}")
+
+        # replace onion url with clearnet url
+        result_url = self.clearnet_base_url + result_path
+
+        print("upload ok:", result_url)
 
         #print("upload body:", html)
 
