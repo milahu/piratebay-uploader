@@ -1,0 +1,45 @@
+$ du -sh ~/Blinkist\ August\ 2023\ SiteRip\ Collection\ \(GERMAN\)\ -\ OPUS.torrent
+1.1M    /home/user/Blinkist August 2023 SiteRip Collection (GERMAN) - OPUS.torrent
+
+$ du -b ~/Blinkist\ August\ 2023\ SiteRip\ Collection\ \(GERMAN\)\ -\ OPUS.torrent
+1142700 /home/user/Blinkist August 2023 SiteRip Collection (GERMAN) - OPUS.torrent
+
+$ torrenttools info ~/Blinkist\ August\ 2023\ SiteRip\ Collection\ \(GERMAN\)\ -\ OPUS.torrent | head -n6
+Metafile:          /home/user/Blinkist August 2023 SiteRip Collection (GERMAN) - OPUS.torrent
+Protocol version:  v1 + v2 (hybrid)
+Infohash:            v1: 9054154f3b6e48d61b24108c113b21aedbba02fc
+                   v2: 275eca76b77c688c501e2ffab447e7d60facb472d2537c47f07b6976d69f437a
+Piece size:        1 MiB (1048576 bytes)
+Piece count:       11173
+
+$ ./piratebay_uploader.py -f ~/Blinkist\ August\ 2023\ SiteRip\ Collection\ \(GERMAN\)\ -\ OPUS.torrent -d "german audiobook collection with 1965 audiobooks" -a
+reading config from '/home/user/.config/piratebay_uploader/config.json'
+login ok
+upload Status: 413
+upload Content-type: text/html
+upload errors: []
+upload body: <html>
+<head><title>413 Request Entity Too Large</title></head>
+<body>
+<center><h1>413 Request Entity Too Large</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+Traceback (most recent call last):
+  File "/home/user/src/milahu/piratebay-uploader/./piratebay_uploader.py", line 391, in <module>
+    asyncio.run(main())
+  File "/nix/store/k3701zl6gmx3la7y4dnflcvf3xfy88kh-python3-3.11.9/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/nix/store/k3701zl6gmx3la7y4dnflcvf3xfy88kh-python3-3.11.9/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nix/store/k3701zl6gmx3la7y4dnflcvf3xfy88kh-python3-3.11.9/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/user/src/milahu/piratebay-uploader/./piratebay_uploader.py", line 380, in main
+    await uploader.upload_torrent(
+  File "/home/user/src/milahu/piratebay-uploader/./piratebay_uploader.py", line 286, in upload_torrent
+    raise UploadError(" ".join(errors))
+UploadError
