@@ -278,10 +278,10 @@ class PiratebayUploader:
 
             if response.status != 200 or len(errors) > 0:
 
-                #print("upload Status:", response.status)
-                #print("upload Content-type:", response.headers["content-type"])
-                #print("upload errors:", errors)
-                #print("upload body:", html)
+                print("upload Status:", response.status)
+                print("upload Content-type:", response.headers["content-type"])
+                print("upload errors:", errors)
+                print("upload body:", html)
 
                 raise UploadError(" ".join(errors))
 
