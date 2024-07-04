@@ -238,6 +238,13 @@ class PiratebayUploader:
         # for example, the title must not be longer than 80 chars (or 80 bytes)
         # https://forum.suprbay.org/Thread-ThePirateBay-Error-Upload-error4?pid=401482#pid401482
 
+        max_torrent_file_size = 1024 * 1024 # 1 MiB
+
+        torrent_file_size = os.path.getsize(torrent_file)
+
+        if torrent_file_size > max_torrent_file_size:
+            print(f"warning: torrent file is too large. {torrent_file_size} > {max_torrent_file_size}. probably the upload will fail")
+
         if isinstance(description, str):
             description = description.strip()
 
