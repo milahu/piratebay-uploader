@@ -158,9 +158,14 @@ class PiratebayUploader:
         # TODO cache the cookies in ~/.cache/piratebay_uploader/cookies.json
         self.cookie_jar = aiohttp.CookieJar(quote_cookie=False)
 
+        self.headers = {
+            "Accept": "*",
+        }
+
         self.session = aiohttp.ClientSession(
             connector=connector,
             cookie_jar=self.cookie_jar,
+            headers=self.headers,
         )
 
         self.client = aiohttp_retry.RetryClient(self.session, retry_attempts=10)
