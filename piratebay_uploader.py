@@ -356,10 +356,13 @@ async def main():
         sys.exit(1)
 
     if not args.description:
+        """
         print("error: description is required")
         print()
         parser.print_help()
         sys.exit(1)
+        """
+        args.description = os.path.splitext(os.path.basename(args.torrent_file))[0]
 
     # read config from ~/.config/piratebay_uploader/config.json
     config = dict()
