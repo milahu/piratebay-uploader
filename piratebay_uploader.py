@@ -190,7 +190,10 @@ class PiratebayUploader:
 
         username = username or self.username
         password = password or self.password
-        assert username and password, "login requires username and password"
+        assert username and password, (
+            "login requires username and password. "
+            "to create a user accout see https://thepiratebay.org/ -> register"
+        )
 
         url = self.base_url + "/session/"
 
@@ -241,7 +244,7 @@ class PiratebayUploader:
 
         # TODO validate the torrent file
         # for example, the title must not be longer than 80 chars (or 80 bytes)
-        # https://forum.suprbay.org/Thread-ThePirateBay-Error-Upload-error4?pid=401482#pid401482
+        # https://pirates-forum.org/Thread-ThePirateBay-Error-Upload-error4?pid=401482#pid401482
 
         max_torrent_file_size = 1024 * 1024 # 1 MiB
 
